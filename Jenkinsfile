@@ -10,19 +10,10 @@ pipeline {
             }
         }
 
-        stage('Test1') {
+        stage('Test') {
             steps {
                 withGradle {
                     sh './gradlew -Dgeb.env=firefoxHeadless iT'
-                }
-            }
-        }
-
-
-        stage('Test2') {
-            steps {
-                withGradle {
-                    sh './gradlew clean test'
                 }
             }
             post {
