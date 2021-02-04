@@ -17,8 +17,8 @@ pipeline {
 
                     configFileProvider([configFile(
                     fileId:'hello-grails-gradle.properties',
-                    variable: 'systemProp.geb.env')]) {
-                        sh './gradlew -Deb.env=$systemProp.geb.env iT'
+                    targetlocation: 'gradle.properties')]) {
+                        sh './gradlew iT'
                     }
                     
                     //sh './gradlew -Dgeb.env=firefoxHeadless iT'
