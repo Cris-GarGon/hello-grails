@@ -15,7 +15,7 @@ pipeline {
                 withGradle {
                     sh './gradlew clean test'
                     sh './gradlew -Dgeb.env=firefoxHeadless iT'
-                    sh './gradlew '
+                    sh './gradlew codenarc'
                 }
             }
             post {
