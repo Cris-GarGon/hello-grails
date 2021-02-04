@@ -15,11 +15,19 @@ pipeline {
                 withGradle {
                     sh './gradlew clean test'
                     sh './gradlew -Dgeb.env=firefoxHeadless iT'
+                    sh './gradlew '
                 }
             }
             post {
                 always {
                     junit 'build/test-results/test/TEST-*.xml'
+                    publishHTML (target : [allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'build/reports',
+                        reportFiles: 'myreport.html',
+                        reportName: 'My Reports',
+                        reportTitles: 'The Report'])
                 }
             }
         }
