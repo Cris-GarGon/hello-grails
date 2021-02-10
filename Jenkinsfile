@@ -15,11 +15,11 @@ pipeline {
                 withGradle {
                     sh './gradlew clean test'
 
-                    configFileProvider([configFile(
+                 /*   configFileProvider([configFile(
                     fileId:'hello-grails-gradle.properties',
                     targetlocation: 'gradle.properties')]) {
                         sh './gradlew iT'
-                    }
+                    }*/
                     
                     //sh './gradlew -Dgeb.env=firefoxHeadless iT'
                     sh './gradlew codenarcTest'
