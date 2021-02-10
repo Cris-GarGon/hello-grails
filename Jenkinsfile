@@ -41,10 +41,14 @@ pipeline {
 
         stage('QA') {
             steps {
-                sh './gradlew check'
+                withGradle {
+                    sh './gradlew check'
 
-                withSonarQubeEnv(credentialsId: 'ba6547cc-5244-48a3-b921-0a4361ec46a4', installationName: 'local') { 
-                    sh './gradlew sonarqube'
+                    withSonarQubeEnv(
+                    credentialsId: 'ba6547cc-5244-48a3-b921-0a4361ec46a4',
+                    installationName: 'local') { 
+                            sh './gradlew sonarqube'
+                    }
                 }
             }
         }
